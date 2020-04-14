@@ -10,4 +10,4 @@ the game start
 get the name is your number 
 once you find the number and press the exact number get the point.
 
-<img src="dh.jpg" width="500" height="400">
+<img src="lu.png" width="500" height="400">

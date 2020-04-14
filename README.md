@@ -1,12 +1,13 @@
 # game
-lu find game is a simple javascript game.
-kids Entertainment game.
-the game will be start background music will be on. 
+lu find game is a simple javascript game.<br>
+kids Entertainment game.<br>
+the game will be start background music will be on. <br>
 
-
+<br><br><br>
 the game start
 -----------------
 
 get the name is your number 
 once you find the number and press the exact number get the point.
 
+<img src="dh.jpg" width="500" height="400">

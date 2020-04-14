@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lu Find Game</title>
+    <meta name="description" content="Find the number and ged the poind, its kids loves and play game">
+    <meta name="author" content="Luka Samuel">
+    <meta name="keyword" content="game,luka,lu game,javascript game">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+
+</head>
+<body>
+    <audio id="myAudio" source src="music.mp3" type="audio/mpeg" controls loop></audio>
+    <audio id="lose" source src="lose.mp3" type="audio/mpeg"></audio>
+
+    <center><h1>Lu Find Game</h1></center>
+<hr>
+<center><h1 id="msg"></h1>
+    
+</center>
+<div id="counter" align="right"></div>
+<div id="point" align="right"></div>
+<div id="findn"></div><div id="hn"></div>
+<div id="rp"></div>
+<div id="area"></div>
+</body>
+</html>
+<script>
+     var rp=document.createElement("button");
+     rp.setAttribute("onclick","restart()");
+     rp.setAttribute("id","replay")
+        rp.innerText="RePlay";
+        document.getElementById("rp").appendChild(rp);
+  var point=0;
+    var tst=0;
+    function fnum()
+{
+    var min=1; 
+    var max=51;  
+    var fn = Math.floor(Math.random() * (+max - +min)) + +min;
+    document.getElementById("findn").innerHTML="Your number is: "+fn;
+    document.getElementById("hn").innerHTML=fn; 
+}
+
+    function gnum()
+    { 
+        for(var n=1;n<=50;n++)
+        {
+            var min=1; 
+    var max=51;  
+    var rand = Math.floor(Math.random() * (+max - +min)) + +min;
+        var btn=document.createElement("button");
+        btn.innerText=rand;
+        btn.setAttribute("onclick","chk(innerText)");
+document.getElementById('area').appendChild(btn);
+}
+fnum();
+notrand();
+    }
+gnum();
+
+function notrand()
+{
+    var f=document.getElementById("hn").innerText;
+    var btn=document.getElementsByTagName("button");
+
+    for(var i=1;i<btn.length;i++)
+    {
+       if(btn[i].innerText==parseInt(f))
+       {
+          tst=tst+1; 
+       }
+       
+    }   
+    if(tst>=1)
+    {
+        console.log("find luka");
+    }
+    else{
+        var rm=document.getElementsByTagName("button");
+        tst=0;
+        console.log(" not find luka");
+        for(var d=0;d<rm.length;d++)
+        {
+        rm[d].remove();
+    
+        }
+        gnum();
+    }
+  
+}
+function chk(rand)
+{
+    var hn=document.getElementById("hn").innerText;
+    if(rand==parseInt(hn))
+    {
+        point=point+5;
+        timer=0;
+        document.getElementById("point").innerHTML="Your Point is :"+point;
+        var x = document.getElementById("myAudio");
+        x.play(); 
+       // alert("correct");
+        remove();
+        gnum();
+    }
+    else{
+       
+gameover();
+         }
+}
+
+
+function remove()
+{
+    var rm=document.getElementsByTagName("button");
+        tst=0;
+        console.log(" not find luka");
+        for(var d=0;d<rm.length;d++)
+        {
+        rm[d].remove();
+    
+        }
+}
+var timer=0;
+var intv=setInterval(function counter()
+{
+    document.getElementById("counter").innerHTML="Timer its running: "+timer;
+    timer=timer+1;
+    if(timer==31)
+    {
+        clearInterval(intv);
+        gameover();
+    }
+},500);
+function gameover()
+
+    {
+       
+        var x = document.getElementById("myAudio");
+        x.pause(); 
+
+                var lose=document.getElementById("lose");
+        lose.play();
+document.getElementById("msg").innerHTML="Game Over Your score is :"+point;
+         }
+         function restart()
+         {
+            location.reload();
+         }
+</script>
+<style>
+    #area{
+        text-align: center;
+        width: 800px;
+        height: 300px;
+    }
+    button{
+        width: 25px;
+        border-radius: 5px;
+        padding-right: 80px;
+        align-items: center;
+        color: white;
+        background-color: rgb(53, 48, 48);
+        font-size: 25px;
+    }
+    #findn{
+        color: green;
+        font-size: large;
+    }
+#hn{
+    opacity: 0;
+}
+audio{
+    display: none;
+}
+#msg{
+    color:red;
+}
+#replay{
+    background-color: green;
+    width: 200px;
+}
+
+</style>
